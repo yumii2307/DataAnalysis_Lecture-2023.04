@@ -7,8 +7,10 @@ def index():
     return 'Hello Flask'
 
 @app.route('/hello')
-def hello():
-    return render_template('01.hello.html')
+@app.route('/hello/<name>')
+def hello(name=None):       # name 값을 주면 name은 그 값으로 되고, 안주면 None이 됨
+    dt = {'key1':'value1', 'key2':'value2', 'key3':'value3'}
+    return render_template('06.hello.html', name=name, dt=dt, item='item')
 
 if __name__ == '__main__':
     app.run(debug=True)
