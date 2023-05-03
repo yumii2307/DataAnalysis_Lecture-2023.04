@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8e822a4ebc25062eabdd4b3c57e2bd04 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8e822a4ebc25062eabdd4b3c57e2bd04" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8e822a4ebc25062eabdd4b3c57e2bd04 = L.map(
+                "map_8e822a4ebc25062eabdd4b3c57e2bd04",
+                {
+                    center: [37.26950950347203, 127.01071752105099],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6f330cd23482002370ed78ed29b144fa = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_8e822a4ebc25062eabdd4b3c57e2bd04);
+        
+    
+            var marker_2483289a1cf466d619c7d07dbf249bca = L.marker(
+                [37.2617143634238, 126.990890435621],
+                {}
+            ).addTo(map_8e822a4ebc25062eabdd4b3c57e2bd04);
+        
+    
+        var popup_1332896774dabc48b19e55d694efdf83 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_6f403ee7cc076bbaa798d931c8536f20 = $(`<div id="html_6f403ee7cc076bbaa798d931c8536f20" style="width: 100.0%; height: 100.0%;">경기도 수원시 권선구 권선로357번길 30 (서둔동)</div>`)[0];
+                popup_1332896774dabc48b19e55d694efdf83.setContent(html_6f403ee7cc076bbaa798d931c8536f20);
+            
+        
+
+        marker_2483289a1cf466d619c7d07dbf249bca.bindPopup(popup_1332896774dabc48b19e55d694efdf83)
+        ;
+
+        
+    
+    
+            marker_2483289a1cf466d619c7d07dbf249bca.bindTooltip(
+                `<div>
+                     수원역
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f8ff871b8184511272af6d08acbb8adf = L.marker(
+                [37.2579315796358, 127.027004138725],
+                {}
+            ).addTo(map_8e822a4ebc25062eabdd4b3c57e2bd04);
+        
+    
+        var popup_fe2a931ff759ff16c25beb71f198b7fb = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_8ba6270d1c20e4323f835bfe7938aa16 = $(`<div id="html_8ba6270d1c20e4323f835bfe7938aa16" style="width: 100.0%; height: 100.0%;">경기도 수원시 권선구 권선로694번길 25 (권선동, 수원시청역 SK VIEW)</div>`)[0];
+                popup_fe2a931ff759ff16c25beb71f198b7fb.setContent(html_8ba6270d1c20e4323f835bfe7938aa16);
+            
+        
+
+        marker_f8ff871b8184511272af6d08acbb8adf.bindPopup(popup_fe2a931ff759ff16c25beb71f198b7fb)
+        ;
+
+        
+    
+    
+            marker_f8ff871b8184511272af6d08acbb8adf.bindTooltip(
+                `<div>
+                     수원시청
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9522e317378869e77aa20b24d743285a = L.marker(
+                [37.2888825673565, 127.014257988807],
+                {}
+            ).addTo(map_8e822a4ebc25062eabdd4b3c57e2bd04);
+        
+    
+        var popup_25037c03c5f8c1e5bb7f349c22d0c0ae = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_385d79dcdc36514c5d6d24a9f43eab08 = $(`<div id="html_385d79dcdc36514c5d6d24a9f43eab08" style="width: 100.0%; height: 100.0%;">경기도 수원시 팔달구 정조로 910 (장안동)</div>`)[0];
+                popup_25037c03c5f8c1e5bb7f349c22d0c0ae.setContent(html_385d79dcdc36514c5d6d24a9f43eab08);
+            
+        
+
+        marker_9522e317378869e77aa20b24d743285a.bindPopup(popup_25037c03c5f8c1e5bb7f349c22d0c0ae)
+        ;
+
+        
+    
+    
+            marker_9522e317378869e77aa20b24d743285a.bindTooltip(
+                `<div>
+                     장안문
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
