@@ -41,7 +41,7 @@ def hotPlaces():
 
         mu.hot_places(places, app)
 
-        return render_template('10.HotPlaces_res.html')
+        return render_template('10.HotPlaces.html')
     
 @app.route('/interpark')
 def interpark():

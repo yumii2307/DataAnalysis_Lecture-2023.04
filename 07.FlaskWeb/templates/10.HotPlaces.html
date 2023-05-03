@@ -1,9 +1,10 @@
 {% extends "13.bootstrap.html" %}
-{% block subtitle %}수원 Hot Places{% endblock %}
+{% block subtitle %}Hot Places{% endblock %}
 {% block content %}
     <style>
         input {margin: 3px;}
         form {margin-bottom: 20px;}
+        button {margin-top: 10px;}
     </style>
     <form action="hotPlaces" method="post">
         <input type="text" name="place1">           <!-- id = JS | class = CSS | name = Server -->
@@ -11,4 +12,8 @@
         <input type="text" name="place3">           
         <input type="submit" class="btn btn-primary" value="제출">
     </form>
+    <iframe src="{{url_for('static', filename='img/hotPlaces.html')}}" frameborder="1" width="800" height="500"></iframe>
+    <div>
+        <button class="btn btn-primary" onclick="location.href='/hotPlaces'">재실행</button>
+    </div>
 {% endblock %}
