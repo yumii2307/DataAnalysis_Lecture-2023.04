@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <title>INTERPARK bestseller</title>
+    <style>
+        img {border: 1px solid black; height: 300; margin-bottom: 8px;}
+        .pad {padding-left: 40px;}
+        #anthor {font-size: 14px; color: grey; margin-bottom: 10px;}
+        #title {font-size: 18px;}
+        #price {font-size: 20px; font-weight: bold;}
+    </style>
+</head>
+<body style="margin: 40px;">
+    <h2>인터파크도서 <strong>베스트셀러</strong></h2>
+    <hr>
+    <div class="container">
+        <div class="row">
+            {% for book in book_list[:3] %}
+            <div class="col-4">
+                <div style="font-size: 40px;">{{book.순위}}</div>
+                <div class="pad"><img src="{{book.이미지}}"></div>
+                <div class="pad" id="title"><a href="{{book.href}}" target="_blank"><strong>{{book.타이틀}}</strong></a></div>
+                <div class="pad" id="anthor">{{book.저자}}/{{book.출판사}}</div>
+                <div class="pad"><a id="price">{{book.가격}}</a>원</div>
+            </div>
+            {% endfor %}
+            {% for book in book_list[3:6] %}
+            <div class="col-4">
+                <div style="font-size: 40px;">{{book.순위}}</div>
+                <div class="pad"><img src="{{book.이미지}}" style="border: 1px solid black" height="300"></div>
+                <div class="pad" id="title"><a href="{{book.href}}" target="_blank"><strong>{{book.타이틀}}</strong></a></div>
+                <div class="pad" id="anthor">{{book.저자}}/{{book.출판사}}</div>
+                <div class="pad"><a id="price">{{book.가격}}</a>원</div>
+            </div>
+            {% endfor %}
+            {% for book in book_list[6:9] %}
+            <div class="col-4">
+                <div style="font-size: 40px;">{{book.순위}}</div>
+                <div class="pad"><img src="{{book.이미지}}" style="border: 1px solid black" height="300"></div>
+                <div class="pad" id="title"><a href="{{book.href}}" target="_blank"><strong>{{book.타이틀}}</strong></a></div>
+                <div class="pad" id="anthor">{{book.저자}}/{{book.출판사}}</div>
+                <div class="pad"><a id="price">{{book.가격}}</a>원</div>
+            </div>
+            {% endfor %}
+            {% for book in book_list[9:12] %}
+            <div class="col-4">
+                <div style="font-size: 40px;">{{book.순위}}</div>
+                <div class="pad"><img src="{{book.이미지}}" style="border: 1px solid black" height="300"></div>
+                <div class="pad" id="title"><a href="{{book.href}}" target="_blank"><strong>{{book.타이틀}}</strong></a></div>
+                <div class="pad" id="anthor">{{book.저자}}/{{book.출판사}}</div>
+                <div class="pad"><a id="price">{{book.가격}}</a>원</div>
+            </div>
+            {% endfor %}
+            {% for book in book_list[12:15] %}
+            <div class="col-4">
+                <div style="font-size: 40px;">{{book.순위}}</div>
+                <div class="pad"><img src="{{book.이미지}}" style="border: 1px solid black" height="300"></div>
+                <div class="pad" id="title"><a href="{{book.href}}" target="_blank"><strong>{{book.타이틀}}</strong></a></div>
+                <div class="pad" id="anthor">{{book.저자}}/{{book.출판사}}</div>
+                <div class="pad"><a id="price">{{book.가격}}</a>원</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
