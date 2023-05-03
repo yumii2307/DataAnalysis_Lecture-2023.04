@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수원 Hot Places</title>
+{% extends "13.bootstrap.html" %}
+{% block subtitle %}수원 Hot Places{% endblock %}
+{% block content %}
     <style>
         input {margin: 3px;}
+        form {margin-bottom: 20px;}
     </style>
-</head>
-<body style="margin: 40px;">
-    <h3>수원 Hot Places</h3>
-    <hr>
     <form action="hotPlaces" method="post">
         <input type="text" name="place1">           <!-- id = JS | class = CSS | name = Server -->
         <input type="text" name="place2">           
         <input type="text" name="place3">           
-        <input type="submit" value="제출">           
+        <input type="submit" class="btn btn-primary" value="제출">
     </form>
-</body>
-</html>
+{% endblock %}

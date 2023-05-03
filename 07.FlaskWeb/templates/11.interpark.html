@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTERPARK bestseller</title>
-    <style>
-        th {font-weight: bold;}
-        td {text-align: center;}
-    </style>
-</head>
-<body style="margin: 40px;">
-    <h1><strong>베스트셀러(인터파크 추천)</strong></h1>
-    <hr>
-    <table>
+{% extends "13.bootstrap.html" %}
+{% block subtitle %}베스트셀러(인터파크 추천){% endblock %}
+{% block content %}
+    <table style="margin-left: 130px;">
         <tr>
             <th>순위</th>
             <th>이미지</th>
@@ -33,5 +21,4 @@
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}
