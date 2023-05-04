@@ -72,7 +72,7 @@
                     </a>
                 </li>  
             </ul>
-            <span class="navbar-text me-3">제임스님 환영합니다.</span>
+            <span class="navbar-text me-3">{% block weather %}{% endblock %}</span>
         </div>
     </nav>
     <div class="container" style="margin-top:80px">
@@ -84,10 +84,10 @@
                     <a href="#"><span class="badge bg-secondary">수정</span></a>
                 </div>
                 <div class="mt-5">
-                    <i class="fa-solid fa-envelope"></i> james2023@gmail.com<br>
-                    <img src="{{url_for('static', filename='img/github.png')}}" height="16" class="me-2"><a href="#">james</a><br>
-                    <img src="{{url_for('static', filename='img/facebook.png')}}" height="16" class="me-2"><a href="#">jamesFacebook</a><br>
-                    <img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">용인시 수지구
+                    <i class="fa-solid fa-envelope"></i> yumii2307@naver.com<br>
+                    <img src="{{url_for('static', filename='img/github.png')}}" height="16" class="me-2"><a href="#">yumii2307</a><br>
+                    <img src="{{url_for('static', filename='img/facebook.png')}}" height="16" class="me-2"><a href="#">yumi'sFacebook</a><br>
+                    <img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">수원시 장안구
                     <a href="#"><span class="badge bg-secondary">날씨</span></a><br>
                     <button class="btn btn-sm btn-outline-primary mt-3">Edit Profile</button>
                 </div>    

@@ -6,6 +6,7 @@
         td { height: 120px; }
     </style>
 {% endblock %}
+{% block weather %}{{ weather | safe() }}{% endblock %}
 {% block subtitle %}일정표{% endblock %}
 {% block content %}
     <div class="d-flex justify-content-between">
