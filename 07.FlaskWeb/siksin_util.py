@@ -6,7 +6,6 @@ def siksin(place):
     base_url = 'https://www.siksinhot.com/search'
     url = f'{base_url}?keywords={quote(place)}'
     result = requests.get(url)
-    html = result.text
     soup = BeautifulSoup(result.text, 'html.parser')
     lis = soup.select('.localFood_list > li')
     line = []
