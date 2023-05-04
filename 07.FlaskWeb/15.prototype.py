@@ -28,11 +28,16 @@ def genie():
     music_list = gu.genie()
     return render_template('prototype/genie.html', menu=menu, weather=get_weather(app), music_list=music_list)
 
-@app.route('/siksin')
+@app.route('/siksin', methods=['GET', 'POST'])
 def siksin():
-    menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
-    food_list = su.siksin()
-    return render_template('prototype/siksin.html', menu=menu, weather=get_weather(app), food_list=food_list)
+    if request.method == 'GET':
+        menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
+        return render_template('prototype/siksin.html', menu=menu, weather=get_weather(app))
+    else:
+        place = request.form['place']
+        menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
+        food_list = su.siksin(place)
+        return render_template('prototype/siksin.html', menu=menu, weather=get_weather(app), food_list=food_list)
 
 @app.route('/schedule')
 def schedule():
