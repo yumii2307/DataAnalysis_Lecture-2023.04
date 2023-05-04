@@ -8,6 +8,7 @@ test.ipynb
 img/
 upload/
 key/
+photo/
 
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
