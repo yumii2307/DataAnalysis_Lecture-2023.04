@@ -1,24 +1,33 @@
-{% extends "13.bootstrap.html" %}
-{% block subtitle %}베스트셀러(인터파크 추천){% endblock %}
-{% block content %}
-    <table style="margin-left: 140px;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpark 베스트셀러</title>
+</head>
+<body style="margin: 40px;">
+    <h3>Interpark 베스트셀러</h3>
+    <hr>
+    <table>
         <tr>
             <th>순위</th>
             <th>이미지</th>
-            <th>타이틀</th>
+            <th>제목</th>
             <th>저자</th>
             <th>출판사</th>
             <th>가격</th>
         </tr>
         {% for book in book_list %}
         <tr>
-            <td>{{book.순위}}</td>
-            <td><img src="{{book.이미지}}" height="40"></td>
-            <td><a href="{{book.href}}" target="_blank">{{book.타이틀}}</a></td>
+            <td style="text-align: center;">{{book.순위}}</td>
+            <td style="text-align: center;"><img src="{{book.img}}" height="40"></td>
+            <td><a href="{{book.href}}" target="_blank">{{book.제목}}</a></td>
             <td>{{book.저자}}</td>
             <td>{{book.출판사}}</td>
             <td>{{book.가격}}</td>
         </tr>
         {% endfor %}
     </table>
-{% endblock %}
+</body>
+</html>
