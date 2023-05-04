@@ -5,7 +5,7 @@ kakaoapikey.txt
 password.txt
 test.py
 test.ipynb
-07.FlaskWeb/static/img/
+img/
 
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
