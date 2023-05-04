@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import inter_util as iu
+import crawl_util as cu
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def index():
 
 @app.route('/interpark2')
 def interpark2():
-    book_list = iu.inter()
+    book_list = cu.interpark()
     return render_template('11.interpark2.html', book_list=book_list)
 
 if __name__ == '__main__':

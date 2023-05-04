@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item ms-3">
-                    <a class="nav-link {% if menu.us %}active{% endif %}" href="{% if menu.us %}#{% else %}#{% endif %}">
+                    <a class="nav-link {% if menu.us %}active{% endif %}" href="{% if menu.us %}#{% else %}/user{% endif %}">
                         <i class="fa-solid fa-user-group"></i> 사용자
                     </a>
                 </li>
@@ -41,14 +41,14 @@
                         <li><a class="dropdown-item" href="#">A third link</a></li>
                     </ul>
                 </li>
-                <li class="nav-item ms-3">
-                    <a class="nav-link dropdown-toggle {% if menu.cr %}active{% endif %}" href="{% if menu.cr %}#{% else %}#{% endif %}">
+                <li class="nav-item dropdown ms-3">
+                    <a class="nav-link dropdown-toggle {% if menu.cr %}active{% endif %}" href="{% if menu.cr %}#{% else %}#{% endif %}" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-spider"></i> 크롤링
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
+                        <li><a class="dropdown-item" href="/interpark">인터파크</a></li>
+                        <li><a class="dropdown-item" href="/genie">지니차트</a></li>
+                        <li><a class="dropdown-item" href="/siksin">식신</a></li>
                     </ul>
                 </li>
                 <li class="nav-item ms-3">
