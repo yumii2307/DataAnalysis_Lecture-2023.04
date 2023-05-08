@@ -7,8 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/6ad2601fd7.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="{{url_for('static', filename='js/ajax.js')}}"></script>
     <style>
         * { font-family: 'Noto Sans KR', sans-serif; }
         a { text-decoration: none; }
@@ -44,7 +42,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown ms-3">
-                    <a class="nav-link dropdown-toggle {% if menu.cr %}active{% endif %}" href="{% if menu.cr %}#{% else %}#{% endif %}">
+                    <a class="nav-link dropdown-toggle {% if menu.cr %}active{% endif %}" href="{% if menu.cr %}#{% else %}#{% endif %}" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-spider"></i> 크롤링
                     </a>
                     <ul class="dropdown-menu">
@@ -82,26 +80,17 @@
             <div class="col-3">
                 <img src="{{url_for('static', filename='photo/profile.jpg')}}" class="rounded-circle" width="256" height="256"> 
                 <div class="mt-4">
-                    <span id="quoteMsg">{{ quote }}</span>
-                    <a href="javascript:changeQuote()"><span class="badge bg-secondary ms-1">수정</span></a>
+                    {{ quote }}
+                    <a href="#"><span class="badge bg-secondary ms-1">수정</span></a>
                 </div>
                 <div class="mt-5">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span onclick="copyToClipboard('yumii2307@naver.com'); alert('copy!')"> yumii2307@naver.com</span><br>
-                    <i class="fa-brands fa-github"></i><a href="https://github.com/yumii2307" target="_blank"> yumii2307</a><br>
-                    <i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/yum____ii" target="_blank"> yum____ii</a><br>
-                    <a href="#" onclick="changeAddr(); return false;">
-                        <i class="fa-solid fa-location-dot" style="color: #000;"></i>
-                    </a>
-                        <span id="addr">{{ addr }}</span>
-                        <a href="javascript:changeWeather()"><span class="badge bg-secondary">날씨</span></a>
-                        <div id="addrInput" class="mt-2 d-none">
-                            <input type="text" id="addrInputTag" class="form-control form-control-sm" onkeyup="if(window.event.keyCode==13) {addrSubmit()}">
-                            <a href="javascript:addrSubmit()"><span class="badge bg-primary">확인</span></a>
-                        </div>
-                        <div id="weather"></div>
+                    <i class="fa-solid fa-envelope"></i> yumii2307@naver.com<br>
+                    <i class="fa-brands fa-github"></i><a href="#"> yumii2307</a><br>
+                    <i class="fa-brands fa-instagram"></i><a href="#"> yum____i</a><br>
+                    <i class="fa-solid fa-location-dot"></i> 수원시 장안구
+                    <a href="#"><span class="badge bg-secondary">날씨</span></a><br>
                     <button class="btn btn-sm btn-outline-primary mt-3">Edit Profile</button>
-                </div>
+                </div>    
             </div>
             <div class="col-9">
                 <h3><strng>{% block subtitle %}{% endblock %}</strng></h3>
