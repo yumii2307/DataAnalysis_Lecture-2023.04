@@ -6,6 +6,7 @@ import siksin_util as su
 import map_util as mu
 import image_util as iu
 import os, random
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -70,8 +71,11 @@ def interpark():
 def genie():
     menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
     music_list = gu.genie()
+    now = datetime.now()
+    ymd = now.strftime('%Y-%m-%d')
+    hh = now.strftime('%H')
     return render_template('prototype/genie.html', menu=menu, weather=get_weather(app),
-                           music_list=music_list, quote=quote, addr=addr)
+                           music_list=music_list, quote=quote, addr=addr, ymd=ymd, hh=hh)
 
 @app.route('/siksin', methods=['GET', 'POST'])
 def siksin():
