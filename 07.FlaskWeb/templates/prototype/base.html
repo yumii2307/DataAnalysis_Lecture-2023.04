@@ -92,7 +92,7 @@
                     </a>
                 </div>
                 <div class="mt-4">
-                    <span id="quoteMsg">{{ quote }}</span>
+                    <span id="quoteMsg">{{ session['quote'] }}</span>
                     <a href="javascript:changeQuote()"><span class="badge bg-secondary ms-1">수정</span></a>
                 </div>
                 <div class="mt-5">
@@ -103,13 +103,13 @@
                     <a href="#" onclick="changeAddr(); return false;">
                         <i class="fa-solid fa-location-dot" style="color: #000;"></i>
                     </a>
-                        <span id="addr">{{ addr }}</span>
+                        <span id="addr">{{ session['addr'] }}</span>
                         <a href="javascript:changeWeather()"><span class="badge bg-secondary">날씨</span></a>
-                        <div id="addrInput" class="mt-2 d-none">
-                            <input type="text" id="addrInputTag" class="form-control form-control-sm" onkeyup="if(window.event.keyCode==13) {addrSubmit()}">
-                            <a href="javascript:addrSubmit()"><span class="badge bg-primary">확인</span></a>
-                        </div>
-                        <div id="weather"></div>
+                    <div id="addrInput" class="mt-2 d-none">
+                        <input type="text" id="addrInputTag" class="form-control form-control-sm" onkeyup="if(window.event.keyCode==13) {addrSubmit()}">
+                        <a href="javascript:addrSubmit()"><span class="badge bg-primary">확인</span></a>
+                    </div>
+                    <div id="weather"></div>
                     <button class="btn btn-sm btn-outline-primary mt-3">Edit Profile</button>
                 </div>
             </div>
