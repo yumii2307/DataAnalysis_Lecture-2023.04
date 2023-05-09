@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: center;">
-                                <input class="btn btn-primary" type="submit" value="로그인">
+                                <input class="btn btn-primary" type="submit" onkeyup="if(window.event.keyCode==13)" value="로그인">
                                 <input class="btn btn-secondary" type="reset" value="취소">
                             </td>
                         </tr>
@@ -54,4 +54,17 @@
             <div class="col-4"></div>
         </div>
     </div>
+    <nav class="navbar navbar-expand-sm bg-light text-muted fixed-bottom">
+        <div class="container-fluid justify-content-center">
+            Copyright &copy; 2023 Coding World Crop, All right reserved.
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script>
+                alert("{{ messages[-1] }}")
+            </script>
+        {% endif %}
+    {% endwith %}
 </body>
+</html>

@@ -1,16 +1,19 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from weather_util import get_weather, get_weather_by_coord
 import crawl_util as cu
 import genie_util as gu
 import siksin_util as su
 import map_util as mu
 import image_util as iu
-import os, random
+import os, random, json
 from datetime import datetime
+from user_module.user import user_bp
 
 app = Flask(__name__)
 app.secret_key = 'qwert12345'
 app.config['SESSION_COOKIE_PATH'] = '/'
+
+app.register_blueprint(user_bp, url_prefix='/user')
 
 # flask 2.3 에서는 이 코드만 사용 가능
 """ with app.app_context():
@@ -71,8 +74,14 @@ def home():
 
 @app.route('/user')
 def user():
+    try:
+        _ = session['uid']
+    except:
+        flash('사용자 정보를 확인하기 위해 먼저 로그인 하세요')
+        return redirect('/user/login')
+    
     menu = {'ho':0, 'us':1, 'api':0, 'cr':0, 'ai':0, 'sc':0}
-    return render_template('prototype/user.html', menu=menu, weather=get_weather(app),
+    return render_template('prototype/user/user.html', menu=menu, weather=get_weather(app),
                            quote=quote, addr=addr)
 
 @app.route('/interpark')
@@ -108,6 +117,12 @@ def siksin():
 
 @app.route('/schedule')
 def schedule():
+    try:
+        _ = session['uid']
+    except:
+        flash('스케쥴을 확인하기 위해 먼저 로그인 하세요')
+        return redirect('/user/login')
+    
     menu = {'ho':0, 'us':0, 'api':0, 'cr':0, 'ai':0, 'sc':1}
     return render_template('prototype/schedule.html', menu=menu, weather=get_weather(app),
                            quote=quote, addr=addr)

@@ -57,9 +57,8 @@ def home():
 @app.route('/user')
 def user():
     menu = {'ho':0, 'us':1, 'api':0, 'cr':0, 'ai':0, 'sc':0}
-    return redirect('/schedule')
-    # return render_template('prototype/user.html', menu=menu, weather=get_weather(app),
-    #                        quote=quote, addr=addr)
+    return render_template('prototype/user.html', menu=menu, weather=get_weather(app),
+                           quote=quote, addr=addr)
 
 @app.route('/interpark')
 def interpark():

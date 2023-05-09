@@ -69,12 +69,19 @@
                     </a>
                 </li>  
                 <li class="nav-item ms-3">
-                    <a class="nav-link" href="/user/login"><i class="fa-solid fa-right-to-bracket"></i> 로그인</a>
+                    {% if session['uid'] %}
+                        <a class="nav-link" href="/user/logout"><i class="fa-solid fa-right-to-bracket"></i> 로그아웃</a>
+                    {% else %}
+                        <a class="nav-link" href="/user/login"><i class="fa-solid fa-right-to-bracket"></i> 로그인</a>
+                    {% endif %}
                 </li>  
             </ul>
-            <span class="navbar-text me-3"><a href="#"><strong>유미</strong></a> 님 환영합니다.
-                <i class="fa-solid fa-feather"></i>
-            </span>
+            {% if session['uid'] %}
+                <span class="navbar-text me-3"><a href="/user/mypage"><strong>{{ session['uid'] }}</strong></a> 님 환영합니다.
+                    <i class="fa-solid fa-feather"></i></span>
+            {% else %}
+                <span class="navbar-text me-3">환영합니다. <i class="fa-solid fa-feather"></i></span>
+            {% endif %}
         </div>
     </nav>
     <div class="container" style="margin-top:100px">
@@ -118,13 +125,18 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-sm bg-light fixed-bottom">
+    <nav class="navbar navbar-expand-sm bg-light text-muted fixed-bottom">
         <div class="container-fluid justify-content-center">
-            <span class="navbar-text">
-                Copyright &copy; 2023 Coding World Crop, All right reserved.
-            </span>
+            Copyright &copy; 2023 Coding World Crop, All right reserved.
         </div>
     </nav>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script>
+                alert("{{ messages[-1] }}")
+            </script>
+        {% endif %}
+    {% endwith %}
     {% block additional_body %}{% endblock %}    
 </body>
 </html>
