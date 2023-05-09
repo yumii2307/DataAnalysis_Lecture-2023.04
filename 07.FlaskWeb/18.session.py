@@ -28,6 +28,7 @@ app.register_blueprint(user_bp, url_prefix='/user')
 def before_first_request():
     global quote, quotes           # quote, quotes 변수를 전역 변수로 만들어 줌
     global addr
+    global ymd, hh, now
     filename = os.path.join(app.static_folder, 'data/QuoteEnVer.txt')
     with open(filename, encoding='utf-8') as f:
         quotes = f.readlines()
@@ -35,6 +36,9 @@ def before_first_request():
     session['quote'] = quote
     addr = '수원시 장안구'
     session['addr'] = addr
+    now = datetime.now()
+    ymd = now.strftime('%Y-%m-%d')
+    hh = now.strftime('%H')
 
 @app.route('/change_quote')
 def change_quote():
@@ -86,12 +90,8 @@ def user():
 
 @app.route('/interpark')
 def interpark():
-    global ymd, hh, now
     menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
     book_list = cu.interpark()
-    now = datetime.now()
-    ymd = now.strftime('%Y-%m-%d')
-    hh = now.strftime('%H')
     return render_template('prototype/interpark.html', menu=menu, weather=get_weather(app),
                            book_list=book_list, quote=quote, addr=addr, ymd=ymd, hh=hh)
 
@@ -100,6 +100,13 @@ def genie():
     menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
     music_list = gu.genie()
     return render_template('prototype/genie.html', menu=menu, weather=get_weather(app),
+                           music_list=music_list, quote=quote, addr=addr, ymd=ymd, hh=hh)
+
+@app.route('/genie_jquery')
+def genie_jquery():
+    menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
+    music_list = gu.genie()
+    return render_template('prototype/genie_jquery.html', menu=menu, weather=get_weather(app),
                            music_list=music_list, quote=quote, addr=addr, ymd=ymd, hh=hh)
 
 @app.route('/siksin', methods=['GET', 'POST'])
