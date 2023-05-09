@@ -122,6 +122,24 @@ def siksin():
         return render_template('prototype/siksin.html', menu=menu, weather=get_weather(app),
                                food_list=food_list, quote=quote, addr=addr)
 
+@app.route('/hotplaces', methods=['GET', 'POST'])
+def hotplaces():
+    if request.method == 'GET':
+        menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
+        return render_template('prototype/hotplaces.html', menu=menu, weather=get_weather(app),
+                                quote=quote, addr=addr)
+    else:
+        place1 = request.form['place1']
+        place2 = request.form['place2']
+        place3 = request.form['place3']
+        places = [place1, place2, place3]
+
+        mu.hot_places(places, app)
+        
+        menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
+        return render_template('prototype/hotplaces.html', menu=menu, weather=get_weather(app),
+                                quote=quote, addr=addr)
+
 @app.route('/schedule')
 def schedule():
     try:

@@ -63,5 +63,5 @@ def hot_places(places, app):
             popup=folium.Popup(df.addr[i], max_width=200),
             tooltip=df.place[i]
         ).add_to(map)
-    filename = os.path.join(app.static_folder, 'img/hotPlaces.html')
+    filename = os.path.join(app.static_folder, 'img/hotplaces.html')
     map.save(filename)
