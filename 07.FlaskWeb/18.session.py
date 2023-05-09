@@ -135,7 +135,7 @@ def hotplaces():
         places = [place1, place2, place3]
 
         mu.hot_places(places, app)
-        
+
         menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
         return render_template('prototype/hotplaces.html', menu=menu, weather=get_weather(app),
                                 quote=quote, addr=addr)
@@ -150,7 +150,7 @@ def schedule():
     
     menu = {'ho':0, 'us':0, 'api':0, 'cr':0, 'ai':0, 'sc':1}
     return render_template('prototype/schedule.html', menu=menu, weather=get_weather(app),
-                           quote=quote, addr=addr)
+                           quote=quote, addr=addr, ymd=ymd)
 
 if __name__ == '__main__':
     app.run(debug=True)
