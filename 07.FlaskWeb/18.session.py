@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, flash
 from weather_util import get_weather, get_weather_by_coord
 import crawl_util as cu
-import genie_util as gu
-import siksin_util as su
 import map_util as mu
 import image_util as iu
 import os, random, json
@@ -98,14 +96,14 @@ def interpark():
 @app.route('/genie')
 def genie():
     menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
-    music_list = gu.genie()
+    music_list = cu.genie()
     return render_template('prototype/genie.html', menu=menu, weather=get_weather(app),
                            music_list=music_list, quote=quote, addr=addr, ymd=ymd, hh=hh)
 
 @app.route('/genie_jquery')
 def genie_jquery():
     menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
-    music_list = gu.genie()
+    music_list = cu.genie()
     return render_template('prototype/genie_jquery.html', menu=menu, weather=get_weather(app),
                            music_list=music_list, quote=quote, addr=addr, ymd=ymd, hh=hh)
 
@@ -118,7 +116,7 @@ def siksin():
     else:
         place = request.form['place']
         menu = {'ho':0, 'us':0, 'api':0, 'cr':1, 'ai':0, 'sc':0}
-        food_list = su.siksin(place)
+        food_list = cu.siksin(place)
         return render_template('prototype/siksin.html', menu=menu, weather=get_weather(app),
                                food_list=food_list, quote=quote, addr=addr)
 

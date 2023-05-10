@@ -1,4 +1,5 @@
 import requests
+from urllib.parse import quote
 from bs4 import BeautifulSoup
 
 def interpark():
@@ -24,3 +25,41 @@ def interpark():
                       '가격':price, 'img':img, 'href':base_url+href})
 
     return lines
+
+def genie():
+    line = []
+    for i in range(1, 5):
+        url = f'https://www.genie.co.kr/chart/top200?&pg={i}'
+        result = requests.get(url)
+        header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
+        result = requests.get(url, headers=header)
+        soup = BeautifulSoup(result.text, 'html.parser')
+        trs = soup.select('tr.list')
+        for tr in trs:
+            rank = tr.select_one('.number').get_text().split('\n')[0].strip()
+            img = 'https:' + tr.select_one('.cover').find('img')['src']
+            title = tr.select_one('.info > .title.ellipsis').get_text().split('\n')[-1].strip()
+            artist = tr.select_one('.info > .artist.ellipsis').get_text().strip()
+            album = tr.select_one('.info > .albumtitle.ellipsis').get_text()
+            line.append({'rank': rank, 'img': img, 'title': title, 'artist': artist, 'album': album})
+
+    return line
+
+def siksin(place):
+    base_url = 'https://www.siksinhot.com/search'
+    url = f'{base_url}?keywords={quote(place)}'
+    result = requests.get(url)
+    soup = BeautifulSoup(result.text, 'html.parser')
+    lis = soup.select('.localFood_list > li')
+    line = []
+    for li in lis:
+        img = li.find('img')['src']
+        href = li.select_one('figure').find('a')['href']
+        title = li.select_one('.textBox > h2').get_text()
+        score = li.select_one('.textBox > .score').get_text()
+        atags = li.select('.cate > a')
+        location = atags[0].get_text()
+        menu = atags[1].get_text()
+        line.append({'img': img, 'title': title, 'score': score, 'location': location, 'menu': menu, 'href': href})
+    
+    return line
