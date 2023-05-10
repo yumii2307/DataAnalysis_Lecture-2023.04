@@ -1,8 +1,5 @@
 {% extends "prototype/base.html" %}
-{% block title %}Genie{% endblock %}
 {% block additional_head %}
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap.min.css">
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
@@ -10,10 +7,13 @@
         th { text-align: center; }
     </style>
 {% endblock %}
+{% block title %}Genie{% endblock %}
 {% block weather %}{{ weather | safe() }}{% endblock %}
 {% block saying %}{{ saying }}{% endblock %}
-{% block subtitle %}<i class="fa-solid fa-headphones-simple"></i> 지니차트 TOP 200 : jQuery Data Table version
-<span style="font-size: 15px; color: grey;">{{ ymd }} {{ hh }}시 기준</span>{% endblock %}
+{% block subtitle %}
+    <i class="fa-solid fa-headphones-simple"></i> 지니차트 TOP 200 : jQuery Data Table version
+    <span style="font-size: 15px; color: grey;">{{ ymd }} {{ hh }}시 기준</span>
+{% endblock %}
 {% block content %}
         <table id="example" class="table">
             <thead>

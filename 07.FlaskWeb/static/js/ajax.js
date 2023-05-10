@@ -65,3 +65,6 @@ function imageSubmit() {
         }
     });
 }
+function hideContent() {
+    $("#imageInput").attr('class', 'mt-2 d-none');
+}

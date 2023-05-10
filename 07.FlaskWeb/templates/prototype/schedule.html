@@ -1,11 +1,12 @@
 {% extends "prototype/base.html" %}
-{% block title %}Schedule{% endblock %}
 {% block additional_head %}
+    <script src="{{url_for('static', filename='js/schedule.js')}}"></script>
     <style>
         th { text-align: center; width: 14.28%; }
         td { height: 120px; }
     </style>
 {% endblock %}
+{% block title %}Schedule{% endblock %}
 {% block weather %}{{ weather | safe() }}{% endblock %}
 {% block saying %}{{ saying }}{% endblock %}
 {% block subtitle %}<i class="fa-solid fa-calendar-days"></i> 일정표{% endblock %}
