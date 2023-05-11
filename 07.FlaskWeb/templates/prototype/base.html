@@ -64,10 +64,15 @@
                         <li><a class="dropdown-item" href="#">A third link</a></li>
                     </ul>
                 </li>  
-                <li class="nav-item ms-3">
-                    <a class="nav-link {% if menu.sc %}active{% endif %}" href="{% if menu.sc %}#{% else %}/schedule{% endif %}">
+                <li class="nav-item dropdown ms-3">
+                    <a class="nav-link dropdown-toggle {% if menu.sc %}active{% endif %}" href="{% if menu.sc %}#{% else %}#{% endif %}" data-bs-toggle="dropdown">
                         <i class="fa-solid fa-calendar-days"></i> 스케쥴
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/schedule"><i class="fa-solid fa-calendar-days"></i> 일정표</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/schedule_js"><i class="fa-solid fa-calendar-days"></i> 일정표_JS Ver.</a></li>
+                    </ul>
                 </li>  
                 <li class="nav-item ms-3">
                     {% if session['uid'] %}
@@ -137,6 +142,6 @@
             </script>
         {% endif %}
     {% endwith %}
-    {% block additional_body %}{% endblock %}    
+    {% block additional_body %}{% endblock %}
 </body>
 </html>

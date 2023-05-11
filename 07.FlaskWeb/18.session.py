@@ -150,5 +150,17 @@ def schedule():
     return render_template('prototype/schedule.html', menu=menu, weather=get_weather(app),
                            quote=quote, addr=addr, ymd=ymd)
 
+@app.route('/schedule_js')
+def schedule_js():
+    try:
+        _ = session['uid']
+    except:
+        flash('스케쥴을 확인하기 위해 먼저 로그인 하세요')
+        return redirect('/user/login')
+    
+    menu = {'ho':0, 'us':0, 'api':0, 'cr':0, 'ai':0, 'sc':1}
+    return render_template('prototype/schedule_js.html', menu=menu, weather=get_weather(app),
+                           quote=quote, addr=addr, ymd=ymd)
+
 if __name__ == '__main__':
     app.run(debug=True)
