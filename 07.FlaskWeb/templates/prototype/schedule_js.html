@@ -1,5 +1,4 @@
 {% extends "prototype/base.html" %}
-{% block title %}Schedule_JS Ver.{% endblock %}
 {% block additional_head %}
     <script src="{{url_for('static', filename='js/schedule_js.js')}}"></script>
     <style>
@@ -7,13 +6,19 @@
         td { height: 120px; }
     </style>
 {% endblock %}
+{% block title %}Schedule_JS Ver.{% endblock %}
 {% block subtitle %}<i class="fa-solid fa-calendar-days"></i> 일정표 JS Ver.{% endblock %}
 {% block content %}
     <div class="d-flex justify-content-between">
+        <div>{{ ymd }}</div>
         <div>
-            <a href="javascript:prevCalendar()">P</a>
-            <span id="tbCalendarYM" colspan="5">yyyy년 m월</span>
-            <a href="javascript:nextCalendar()">N</a>
+            <a href="javascript:prevCalendar()"><i class="fa-solid fa-angle-left ms-2"></i></a>
+            <span id="tbCalendarYM" class="mx-2">yyyy년 m월</span>
+            <a href="javascript:nextCalendar()"><i class="fa-solid fa-angle-right"></i></a>
+        </div>
+        <div>
+            <a href="#"><i class="fa-solid fa-pen me-3"></i></a>
+            <a href="#"><i class="fa-solid fa-rectangle-list"></i></a>
         </div>
     </div>
     <table class="table table-bordered mt-2" id="calendar">
