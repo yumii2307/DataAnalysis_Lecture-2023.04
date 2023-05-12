@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, flash
 from weather_util import get_weather, get_weather_by_coord
+from holiday_util import holiday
 import crawl_util as cu
 import map_util as mu
 import image_util as iu
@@ -158,9 +159,10 @@ def schedule_js():
         flash('스케쥴을 확인하기 위해 먼저 로그인 하세요')
         return redirect('/user/login')
     
+    holidays = holiday()
     menu = {'ho':0, 'us':0, 'api':0, 'cr':0, 'ai':0, 'sc':1}
     return render_template('prototype/schedule_js.html', menu=menu, weather=get_weather(app),
-                           quote=quote, addr=addr, ymd=ymd)
+                           quote=quote, addr=addr, ymd=ymd, holidays=holidays)
 
 if __name__ == '__main__':
     app.run(debug=True)

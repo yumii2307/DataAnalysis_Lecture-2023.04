@@ -1,6 +1,6 @@
 {% extends "prototype/base.html" %}
 {% block additional_head %}
-    <script src="{{url_for('static', filename='js/schedule_js.js')}}"></script>
+    <script src="{{url_for('static', filename='js/schedule_gpt.js')}}"></script>
     <style>
         th { text-align: center; width: 14.28%; }
         td { height: 120px; }
@@ -34,5 +34,7 @@
     </table>
 {% endblock %}
 {% block additional_body %}
-    <script>buildCalendar();</script>
+    <script>
+    buildCalendar();    
+    </script>
 {% endblock %}
