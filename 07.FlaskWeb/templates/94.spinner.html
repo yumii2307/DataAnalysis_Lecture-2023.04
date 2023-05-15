@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Ranking</title>
+</head>
+<body style="margin: 40px;">
+    <h3>Youtube Ranking Top 1000</h3>
+    <a href="/top20"><button>구독자수 Top 20 채널 확인하기</button></a>
+    <a href="/top10"><button>카테고리별 채널수 Top 10 확인하기</button></a>
+    <hr>
+    <img src="{{ url_for('static', filename='img/progess-bar2.gif') }}">
+    <form style="display: none;" action="/youtube_ranking" method="post" id="form">
+        <input type="hidden" id="dummy">
+    </form>
+    <script>
+        window.onload = function() {
+            let form = document.getElementById('form');
+            form.submit();
+        }
+    </script>
+</body>

@@ -8,27 +8,8 @@
 </head>
 <body style="margin: 40px;">
     <h3>구독자수 Top 20 채널</h3>
-    <a href="/youtube_ranking"><button>Youtube Ranking Top 1000</button></a>
+    <a href="/re_youtube_ranking"><button>Youtube Ranking Top 1000</button></a>
     <a href="/top10"><button>카테고리별 채널수 Top 10 확인하기</button></a>
     <hr>
-    <table>
-        <tr>
-            <th>Rank</th>
-            <th>Category</th>
-            <th>Channel</th>
-            <th>구독자수</th>
-            <th>View</th>
-            <th>Video</th>
-        </tr>
-        {% for ranking in ranking_list %}
-        <tr>
-            <td style="text-align: center;">{{ranking.rank}}</td>
-            <td>{{ranking.category}}</td>
-            <td>{{ranking.channel}}</td>
-            <td>{{ranking.구독자수}}</td>
-            <td>{{ranking.view}}</td>
-            <td>{{ranking.video}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <img src="{{ url_for('static', filename='img/top20_subscriber.png') }}">
 </body>

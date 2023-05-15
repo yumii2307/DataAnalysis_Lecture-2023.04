@@ -1,5 +1,7 @@
 import requests, time
 from bs4 import BeautifulSoup
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def melon():
     lines = []
@@ -10,9 +12,7 @@ def melon():
 
     return lines
 
-import requests, time
 import pandas as pd
-from bs4 import BeautifulSoup
 from selenium import webdriver
 import warnings
 warnings.filterwarnings('ignore')
@@ -50,23 +50,33 @@ def YT_ranking():
             
     return lines
 
-import pandas as pd
-
-def YT_ranking_Top20():
+def re_YT_ranking():
     df = pd.read_csv('static/data/youtube_ranking.csv').to_dict()
     lines = []
-    for i in range(20):
+    for i in range(len(df['rank'])): 
         lines.append({'rank': df['rank'][i], 'category': df['category'][i], 'channel': df['channel'][i],
                       '구독자수': df['구독자수'][i], 'view': df['view'][i], 'video': df['video'][i]})
         
     return lines
 
+def YT_ranking_Top20():
+    plt.rcParams['font.family'] = 'Malgun Gothic'
+    plt.rcParams['axes.unicode_minus'] = False
+    df = pd.read_csv('static/data/youtube_ranking.csv')
+    df1 = df.sort_values(by='구독자수', ascending=False)
+
+    plt.figure(figsize=(12,8))
+    sns.barplot(y='channel', x='구독자수', data=df1.head(20))
+    plt.title('구독자수 Top 20 채널')
+    plt.savefig('static/img/top20_subscriber.png')
+
 def YT_ranking_Top10():
     df = pd.read_csv('static/data/youtube_ranking.csv')
-    d_cc = df.category.value_counts().head(10).to_frame()
-    d_cc.reset_index(inplace=True)
-    lines = []
-    for i in range(10):
-        lines.append({'rank': i+1, 'category': d_cc['category'][i], 'count': d_cc['count'][i],})
+    plt.rcParams['font.family'] = 'Malgun Gothic'
+    plt.rcParams['axes.unicode_minus'] = False
+    df3 = df.category.value_counts().to_frame()
 
-    return lines
+    plt.figure(figsize=(12,5))
+    sns.barplot(y=df3.index[:10], x='count', data=df3.head(10))
+    plt.title('카테고리별 채널수 Top 10')
+    plt.savefig('static/img/top10_category.png')
