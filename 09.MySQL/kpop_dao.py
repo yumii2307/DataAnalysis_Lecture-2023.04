@@ -10,43 +10,25 @@ with open('./mysql.json') as f:
 config = json.loads(config_str)
 pool = pooling.MySQLConnectionPool(pool_name="mypool", pool_size=3, **config)
 
-def get_song_list_by_debut(year):
-    conn = pool.get_connection()
-    cur = conn.cursor()
-#   sql = """SELECT r.name, r.debut, l.title FROM song AS l
-#               JOIN girl_group AS r
-#               ON l.sid = r.hit_song_id
-#               WHERE r.debut BETWEEN %s AND %s;"""
-#   cur.execute(sql, (str(year)+'-01-01', str(year)+'-12-31'))
-    sql = """SELECT r.name, r.debut, l.title FROM song AS l
-                JOIN girl_group AS r
-                ON l.sid = r.hit_song_id
-                WHERE r.debut like CONCAT(%s, '%%');"""
-    cur.execute(sql, (year, ))
-    rows = cur.fetchall()
-    cur.close()
-    conn.close()
-    return rows
-
 def get_song_list(num, offset=0):
     conn = pool.get_connection()
     cur = conn.cursor()
-    sql = "SELECT * FROM song LIMIT %s OFFSET %s;"
+    sql = "SELECT * FROM song LIMIT %s OFFSET %s"
     cur.execute(sql, (num, offset))
     rows = cur.fetchall()
     cur.close()
     conn.close()
     return rows
 
-def get_girl_group_list(num, offset=0):
+def get_song(sid):
     conn = pool.get_connection()
     cur = conn.cursor()
-    sql = "SELECT * FROM girl_group LIMIT %s OFFSET %s;"
-    cur.execute(sql, (num, offset))
-    rows = cur.fetchall()
+    sql = "SELECT * FROM song WHERE sid=%s"
+    cur.execute(sql, (sid, ))
+    row = cur.fetchone()
     cur.close()
     conn.close()
-    return rows
+    return row
 
 def insert_song(params):
     conn = pool.get_connection()
@@ -57,11 +39,69 @@ def insert_song(params):
     cur.close()
     conn.close()
 
+def update_song(params):
+    conn = pool.get_connection()
+    cur = conn.cursor()
+    sql = "UPDATE song set title=%s, lyrics=%s WHERE sid=%s"
+    cur.execute(sql, params)
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def delete_song(sid):
+    conn = pool.get_connection()
+    cur = conn.cursor()
+    sql = "DELETE FROM song WHERE sid=%s"
+    cur.execute(sql, (sid,))
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def get_girl_group_list(num, offset=0):
+    conn = pool.get_connection()
+    cur = conn.cursor()
+    sql = """SELECT l.gid, l.name, l.debut, r.title FROM girl_group as l
+                JOIN song AS r ON l.hit_song_id = r.sid
+                ORDER BY l.debut LIMIT %s OFFSET %s"""
+    cur.execute(sql, (num, offset))
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    return rows
+
+def get_girl_group(gid):
+    conn = pool.get_connection()
+    cur = conn.cursor()
+    sql = "SELECT * FROM girl_group WHERE gid=%s"
+    cur.execute(sql, (gid, ))
+    row = cur.fetchone()
+    cur.close()
+    conn.close()
+    return row
+
 def insert_girl_group(params):
     conn = pool.get_connection()
     cur = conn.cursor()
     sql = "INSERT INTO girl_group VALUES(default, %s, %s, %s)"
     cur.execute(sql, params)
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def update_girl_group(params):
+    conn = pool.get_connection()
+    cur = conn.cursor()
+    sql = "UPDATE girl_group SET name=%s, debut=%s, hit_song_id=%s WHERE gid=%s"
+    cur.execute(sql, params)
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def delete_girl_group(gid):
+    conn = pool.get_connection()
+    cur = conn.cursor()
+    sql = "DELETE FROM girl_group WHERE gid=%s"
+    cur.execute(sql, (gid, ))
     conn.commit()
     cur.close()
     conn.close()

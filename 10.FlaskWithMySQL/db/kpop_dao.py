@@ -41,7 +41,9 @@ def get_song_list(num, offset=0):
 def get_girl_group_list(num, offset=0):
     conn = pool.get_connection()
     cur = conn.cursor()
-    sql = "SELECT * FROM girl_group LIMIT %s OFFSET %s;"
+    sql = """SELECT l.gid, l.name, l.debut, r.title FROM girl_group as l
+                JOIN song AS r ON l.hit_song_id = r.sid
+                LIMIT %s OFFSET %s;"""
     cur.execute(sql, (num, offset))
     rows = cur.fetchall()
     cur.close()
